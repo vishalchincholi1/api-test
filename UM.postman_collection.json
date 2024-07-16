@@ -1,0 +1,95 @@
+{
+	"info": {
+		"_postman_id": "9f51553e-7358-43fc-a691-aa00971bebed",
+		"name": "UM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20402950"
+	},
+	"item": [
+		{
+			"name": "api.user.read",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"Id is a non-empty string\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"\r",
+							"  pm.expect(responseData).to.be.an('object');\r",
+							"  pm.expect(responseData.id).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Id should be a non-empty string\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Validate the schema of the response object including nested objects and arrays\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData.id).to.exist.and.to.be.a('string');\r",
+							"    pm.expect(responseData.ver).to.exist.and.to.be.a('string');\r",
+							"    pm.expect(responseData.ts).to.exist.and.to.be.a('string');\r",
+							"    pm.expect(responseData.params).to.exist.and.to.be.an('object');\r",
+							"    pm.expect(responseData.result).to.exist.and.to.be.an('object');\r",
+							"    pm.expect(responseData.result.response).to.exist.and.to.be.an('object');\r",
+							"    pm.expect(responseData.result.response.channel).to.exist.and.to.be.a('string');\r",
+							"    pm.expect(responseData.result.response.profileUserTypes).to.exist.and.to.be.an('array');\r",
+							"    pm.expect(responseData.result.response.organisations).to.exist.and.to.be.an('array');\r",
+							"    pm.expect(responseData.result.response.rootOrg).to.exist.and.to.be.an('object');\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-authenticated-user-token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0VzJHMGgzTVRhc01TekVzY2g2ZklsNG0tOUhQUl90Ny1lRkxqRzVxU1ZZIn0.eyJqdGkiOiIyYTYwODEyZS00MDIyLTQ0MWYtYjMxNy1kOTY4NWYxNTNjMDAiLCJleHAiOjE3MjExNjMxOTMsIm5iZiI6MCwiaWF0IjoxNzIxMTE5OTkzLCJpc3MiOiJodHRwczovL2Rldm51bHAubml1YS5vcmcvYXV0aC9yZWFsbXMvc3VuYmlyZCIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYWNjb3VudCJdLCJzdWIiOiJmMzllOWU1Ni04MzA2LTQ1N2YtODAwMC01YWE5Y2NhMDI3ZWIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJsbXMiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiJhM2ZiOGFkYy04MWQzLTQxZGEtOTYxMC0zMjRiZGEyMTgzNjIiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbImh0dHBzOi8vZGV2bnVscC5uaXVhLm9yZyJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJhZG1pbiIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsicmVhbG0tbWFuYWdlbWVudCI6eyJyb2xlcyI6WyJtYW5hZ2UtdXNlcnMiXX0sImxtcyI6eyJyb2xlcyI6WyJ1bWFfcHJvdGVjdGlvbiJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiIiLCJjbGllbnRJZCI6ImxtcyIsImNsaWVudEhvc3QiOiIxMTQuMTQzLjExOS4yMTgiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJzZXJ2aWNlLWFjY291bnQtbG1zIiwiY2xpZW50QWRkcmVzcyI6IjExNC4xNDMuMTE5LjIxOCIsImVtYWlsIjoic2VydmljZS1hY2NvdW50LWxtc0BwbGFjZWhvbGRlci5vcmcifQ.Ps_pbvNSXGKlzGepAAqqNxFbeBy51cwPi28CINmvVja_kHip8sPWQdXyfWjecjDc5-RZ0yMPsSfxWwlYmOrAiaR2wWttQnUBTaJ1TcH1eshZ5EX9BtGYnGAuNyqZ0TV_ZNAN1SFKAOqzG00Ta4NtmwFWUHFJauSNzDsVDWGNhMZJEHAkDPamAUd9B6NEAdMTj_OYJq2hmqvDtg1dtRLY-XauUU33CxVPE0bDLGgONLxJIFbLSRYIBZwkaFSlgEAS-c9mtcgWiNXLnVRZuQ4q-EpJNgfkip_hv48fCajTJTSbI5S6kgzVZ-pdvIpRb5FhIA3YrhZrD3VaQIk2AzVKUw"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth}}"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/user/v1/read/7e1204cd-4927-4093-8f68-2b45b8a312c0",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"v1",
+						"read",
+						"7e1204cd-4927-4093-8f68-2b45b8a312c0"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
